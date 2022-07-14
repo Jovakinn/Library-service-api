@@ -1,0 +1,46 @@
+type Query {
+    allBooks: [Book]
+    findOne(id: ID): Book
+    allAuthors: [Author]
+    findAllCoffees: [Coffee]!
+    findOneCoffee(id: ID): Coffee
+}
+
+type Mutation {
+    create(name: String, size: Size): Coffee
+    update(id: ID, name: String, size: Size): Coffee
+    delete(id: ID): Coffee
+}
+
+type Book {
+    id: ID!
+    title: String
+    pages: Int
+    rating: Rating
+    author: Author
+}
+
+type Rating {
+    rating: String
+    star: String
+}
+
+type Author {
+    id: ID!
+    firstName: String
+    lastName: String
+    books: [Book]
+}
+
+type Coffee {
+    id: ID!
+    name: String
+    size: Size
+}
+
+enum Size {
+    SHORT,
+    TALL,
+    GRANDE,
+    VENTI
+}
